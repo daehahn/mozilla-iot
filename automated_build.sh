@@ -36,8 +36,7 @@ cd ~/mozilla-iot
 if [ ! -d gateway ]; then
     git clone https://github.com/mozilla-iot/gateway.git
     # DB410c - Replace platform script and image for DB410c support
-    cp -r ./db410c/src/ ./gateway/src/
-    cp -r ./db410c/image/ ./gateway/image/
+    cp -r ./db410c/* ./gateway/
 fi
 
 # DB410c - Build nanomsg and sqlite3
