@@ -25,11 +25,18 @@ cd ~/mozilla-iot
 if [ ! -d intent-parser ]; then
     git clone https://github.com/mozilla-iot/intent-parser.git
 fi
+sudo python -m pip install git+https://github.com/mycroftai/adapt#egg=adapt-parser
 sudo python3 -m pip install git+https://github.com/mycroftai/adapt#egg=adapt-parser
 
+#adapt-parser 0.3.2 has requirement six==1.10.0, but you'll have six 1.10.0 which is incompatible. 
+#sudo pip install six==1.10.0, but below happens
+#jsonschema 3.0.1 has requirement six>=1.11.0, but you'll have six 1.10.0 which is incompatible.
+
 # Install Python Add-on Bindings (Optional)
-sudo python2 -m pip install git+https://github.com/mozilla-iot/gateway-addon-python#egg=gateway_addon --user
-sudo python3 -m pip install git+https://github.com/mozilla-iot/gateway-addon-python#egg=gateway_addon --user
+#sudo python2 -m pip install git+https://github.com/mozilla-iot/gateway-addon-python#egg=gateway_addon --user
+#sudo python3 -m pip install git+https://github.com/mozilla-iot/gateway-addon-python#egg=gateway_addon --user
+sudo pip install git+https://github.com/mozilla-iot/gateway-addon-python.git
+sudo pip3 install git+https://github.com/mozilla-iot/gateway-addon-python.git
 
 # Download lastest version of gateway
 cd ~/mozilla-iot
