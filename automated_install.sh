@@ -34,7 +34,7 @@ sudo apt-get install -y libnanomsg5 libnanomsg-dev
 sudo apt-get install -y python-pip python3-pip #openjdk-8-jre #fire-fox
 
 # Install Python cffi tool
-sudo apt-get install -y libffi-dev python-cffi
+sudo apt-get install -y libffi-dev python-cffi python3-cffi
 
 # Install curl (needed to install nvm)
 sudo apt-get install -y curl
