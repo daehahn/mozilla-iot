@@ -8,8 +8,8 @@ create_swapfile()
   SWAPSIZE=`free | awk '/Swap/ { printf "%d", $2/1024 }'`
   while [[ "$SWAPSIZE" -lt "511" ]]; do
     echo "=============================================================="
-    echo "Create a temporary SWAP file. It will disappear when reboot."
-    echo "** Please consier to add a performanant SWAP file/parition. **"
+    echo "Create a temporary swap. It will be disappear when you reboot."
+    echo "** Please consier to add a permanent SWAP file/parition.    **"
     echo "=============================================================="
     dd if=/dev/zero of=/tmp/swapfile.swp bs=1M count=512 status=progress
     chmod 600 /tmp/swapfile.swp
@@ -25,7 +25,7 @@ create_swapfile()
 create_swapfile
 
 echo "=============================================================="
-echo "            AiVA-96 Mozilla-IoT Gateway Installation"
+echo "        AiVA-96 Mozilla WebThings Gateway Installation.       "
 echo "=============================================================="
 
 cd ~/mozilla-iot
