@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Create temporary swapfile, if not exist
-source ~/temp_swapfile.sh
+source ./temp_swapfile.sh
 
 # Update Package Cache
 sudo apt-get update
