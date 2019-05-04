@@ -28,16 +28,17 @@ fi
 
 #sudo python3 -m pip install git+https://github.com/mycroftai/adapt#egg=adapt-parser
 #adapt-parser 0.3.2 has requirement six==1.10.0, but you'll have six 1.10.0 which is incompatible. 
-#sudo pip install six==1.10.0, but below happens
-#jsonschema 3.0.1 has requirement six>=1.11.0, but you'll have six 1.10.0 which is incompatible.
+cd ~/mozilla-iot
+if [ ! -d adapt ]; then
+    git clone https://github.com/mycroftai/adapt.git
+    sed -i s/"six==1.10.0"/"six>=1.10.0"/ ./adapt/setup.py 
+    sed -i s/"six==1.10.0"/"six>=1.10.0"/ ./adapt/requirements.txt
+    sudo python3 -m pip install ./adapt/
+fi
 
-# Install Python Add-on Bindings (Optional)
+# Install Python Add-on Bindings (for TP-Link and more)
 sudo python2 -m pip install git+https://github.com/mozilla-iot/gateway-addon-python#egg=gateway_addon
 sudo python3 -m pip install git+https://github.com/mozilla-iot/gateway-addon-python#egg=gateway_addon
-#sudo python2 -m pip install git+https://github.com/mozilla-iot/gateway-addon-python#egg=gateway_addon --user
-#sudo python3 -m pip install git+https://github.com/mozilla-iot/gateway-addon-python#egg=gateway_addon --user
-#sudo pip install git+https://github.com/mozilla-iot/gateway-addon-python.git
-#sudo pip3 install git+https://github.com/mozilla-iot/gateway-addon-python.git
 
 # Download lastest version of gateway
 cd ~/mozilla-iot
