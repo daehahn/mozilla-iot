@@ -9,13 +9,16 @@ create_swapfile()
   while [[ "$SWAPSIZE" -lt "511" ]]; do
     echo "=============================================================="
     echo "Create a temporary swap. It will be disappear when you reboot."
-    echo "** Please consier to add a permanent SWAP file/parition.    **"
+    echo "** Please consider to add a permanent SWAP file/parition.   **"
     echo "=============================================================="
-    dd if=/dev/zero of=/tmp/swapfile.swp bs=1M count=512 status=progress
-    chmod 600 /tmp/swapfile.swp
-    sudo mkswap /tmp/swapfile.swp
-    sudo swapon /tmp/swapfile.swp
-   #sudo swapoff /tmp/swapfile.swp # /var/tmp is remained when reboot
+    #dd if=/dev/zero of=/tmp/swapfile.swp bs=1M count=512 status=progress
+    #chmod 600 /tmp/swapfile.swp
+    #sudo mkswap /tmp/swapfile.swp
+    #sudo swapon /tmp/swapfile.swp
+    sudo modprobe zram num_devices=1
+    sudo -i bash -c '$(echo $((512 * 1024 * 1024)) > /sys/block/zram0/disksize)'
+    sudo mkswap /dev/zram0
+    sudo swapon -p 5 /dev/zram0
     SWAPSIZE=`free | awk '/Swap/ { printf "%d", $2/1024}'`
   done
   free
